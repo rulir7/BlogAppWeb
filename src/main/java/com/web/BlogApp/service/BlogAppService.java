@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
+// Import the PostModel class
+import com.web.BlogApp.model.PostComentarioModel;
+
 //import com.web.BlogApp.model.PostComentarioModel;
 import com.web.BlogApp.model.PostModel;
 
@@ -20,5 +24,13 @@ public interface BlogAppService {
 //	PostComentarioModel saveComentario(PostComentarioModel postComentarioModel);
 //	void deleteComentarios( Iterable<PostComentarioModel> postComentarioModel);
 //	Iterable<PostComentarioModel> findComentariosByPost(PostModel PostModel);
+
+	// Métodos para comentários
+	Optional<PostComentarioModel> findIdComentario(UUID id);
+	void deleteComentarios(Iterable<PostComentarioModel> postComentarioModel);
+	Iterable<PostComentarioModel> findComentariosByPost(PostModel postModel);
+	List<PostComentarioModel> findAllComentarios();
+	PostComentarioModel saveComentario(PostComentarioModel postComentarioModel);
+
 
 }

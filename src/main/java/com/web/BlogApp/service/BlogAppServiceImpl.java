@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 //import com.web.BlogApp.model.PostComentarioModel;
 import com.web.BlogApp.model.PostModel;
 import com.web.BlogApp.repository.BlogAppRepository;
-//import com.web.BlogApp.repository.PostComentarioRepository;
+
+// import com.web.BlogApp.model.PostModel;
+import com.web.BlogApp.model.PostComentarioModel;
+import com.web.BlogApp.repository.PostComentarioRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -24,8 +27,8 @@ public class BlogAppServiceImpl implements BlogAppService {
 	@Autowired
 	BlogAppRepository blogapprepository;
 	
-//	@Autowired
-//	PostComentarioRepository postComentarioRepository;
+	@Autowired
+	PostComentarioRepository postComentarioRepository;
 
 	@Override
 	public List<PostModel> findAll() {
@@ -55,34 +58,34 @@ public class BlogAppServiceImpl implements BlogAppService {
 	
 	//  TRATA COMENTÁRIOS DOS POSTS
 		
-//	@Override
-//	public Optional<PostComentarioModel> findIdComentario(UUID id) {
+	@Override
+	public Optional<PostComentarioModel> findIdComentario(UUID id) {
+		// TODO Auto-generated method stub
+		return postComentarioRepository.findById(id);
+	}
+
+	@Override
+	public void deleteComentarios(Iterable<PostComentarioModel> postComentarioModel) {
 //		// TODO Auto-generated method stub
-//		return postComentarioRepository.findById(id);
-//	}
-//
-//	@Override
-//	public void deleteComentarios(Iterable<PostComentarioModel> postComentarioModel) {
+		postComentarioRepository.deleteAll(postComentarioModel);
+	}
+
+	@Override
+	public Iterable<PostComentarioModel> findComentariosByPost(PostModel PostModel) { // busca os comentarios de um post
 //		// TODO Auto-generated method stub
-//		postComentarioRepository.deleteAll(postComentarioModel);
-//	}
-//
-//	@Override
-//	public Iterable<PostComentarioModel> findComentariosByPost(PostModel PostModel) { // busca os comentarios de um post
+		return postComentarioRepository.findByPostModel(PostModel);
+	}
+
+	@Override
+	public List<PostComentarioModel> findAllComentarios() {
 //		// TODO Auto-generated method stub
-//		return postComentarioRepository.findByPostModel(PostModel);
-//	}
-//
-//	@Override
-//	public List<PostComentarioModel> findAllComentarios() {
+		 return postComentarioRepository.findAll();
+	}
+
+	@Override
+	public PostComentarioModel saveComentario(PostComentarioModel postComentarioModel) {
 //		// TODO Auto-generated method stub
-//		 return postComentarioRepository.findAll();	
-//	}
-//
-//	@Override
-//	public PostComentarioModel saveComentario(PostComentarioModel postComentarioModel) {
-//		// TODO Auto-generated method stub
-//		return postComentarioRepository.save(postComentarioModel);
-//	}
+		return postComentarioRepository.save(postComentarioModel);
+	}
 
 }

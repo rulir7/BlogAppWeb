@@ -20,7 +20,7 @@ public class DataUtil {
     @Autowired
     BlogAppRepository blogRepository;
 
-   // @PostConstruct
+//    @PostConstruct
     public void savePosts(){
 
         List<PostModel> postList = new ArrayList<>();
