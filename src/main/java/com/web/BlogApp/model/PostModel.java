@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import jakarta.persistence.OneToMany;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -14,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -40,8 +39,8 @@ public class PostModel {
 	//@Column(name = "texto", columnDefinition="text")
 	private String texto;
 	
-	@OneToMany
-//	private List<PostComentarioModel> postComentarioModel;
+	@OneToMany(mappedBy = "postModel")
+	private List<PostComentarioModel> postComentarioModel;
 	
 	
 	
@@ -85,14 +84,14 @@ public class PostModel {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-//
-//	public List<PostComentarioModel> getPostComentarioModel() {
-//		return postComentarioModel;
-//	}
-//
-//	public void setPostComentarioModel(List<PostComentarioModel> postComentarioModel) {
-//		this.postComentarioModel = postComentarioModel;
-//	}
+
+	public List<PostComentarioModel> getPostComentarioModel() {
+		return postComentarioModel;
+	}
+
+	public void setPostComentarioModel(List<PostComentarioModel> postComentarioModel) {
+		this.postComentarioModel = postComentarioModel;
+	}
 	
 	
 	
